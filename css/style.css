@@ -128,19 +128,19 @@ body {
     }
 }
 
-@media (max-device-width: 425px) {
+@media (max-device-width: 425px) and (min-device-height: 650px) {
     .wrapper {
         padding: 40vmin 7vmin;
     }
 }
 
-@media (max-device-width: 375px) {
+@media (max-device-width: 375px) and (min-device-height: 620px) {
     .wrapper {
         padding: 50vmin 7vmin;
     }
 }
 
-@media (max-device-width: 350px) {
+@media (max-device-width: 350px) and (min-device-height: 580px) {
     .wrapper {
         padding: 70vmin 7vmin;
     }

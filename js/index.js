@@ -48,7 +48,7 @@ document.querySelector('.top-inputs__number').addEventListener('input', function
         secondMultiplier = currentCurrency[bottomCustomSelect.dataset.select].rate;
     }
 
-    bottomInput.value = (firstMultiplier * secondMultiplier).toFixed(2);
+    bottomInput.value = new Intl.NumberFormat('en-EN').format(+(firstMultiplier * secondMultiplier).toFixed(2));
 });
 
 document.querySelector('.bottom-inputs__number').addEventListener('input', function() {
@@ -70,5 +70,5 @@ document.querySelector('.bottom-inputs__number').addEventListener('input', funct
         secondMultiplier = currentCurrency[topCustomSelect.dataset.select].rate;
     }
 
-    topInput.value = (firstMultiplier * secondMultiplier).toFixed(2);
+    topInput.value = new Intl.NumberFormat('en-EN').format(+(firstMultiplier * secondMultiplier).toFixed(2));
 });
