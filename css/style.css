@@ -121,3 +121,27 @@ body {
     padding: 0 15px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+@media (max-device-width: 576px) {
+    .wrapper {
+        padding: 20vmin 7vmin;
+    }
+}
+
+@media (max-device-width: 425px) {
+    .wrapper {
+        padding: 40vmin 7vmin;
+    }
+}
+
+@media (max-device-width: 375px) {
+    .wrapper {
+        padding: 50vmin 7vmin;
+    }
+}
+
+@media (max-device-width: 350px) {
+    .wrapper {
+        padding: 70vmin 7vmin;
+    }
+}
