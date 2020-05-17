@@ -5,6 +5,18 @@ let currentCurrency;
     currentCurrency = await res.json();
 })();
 
+function updateCutomOptionsSize() {
+    const bottomCusOpt = document.querySelector(".bottom-custom-options")
+    const marginBottom = Number.parseInt(getComputedStyle(bottomCusOpt.parentElement.parentElement).marginBottom);
+    const wrapperPadding = Number.parseInt(getComputedStyle(document.querySelector(".wrapper")).paddingBottom);
+
+    bottomCusOpt.style.height = marginBottom + 80 + wrapperPadding + "px"
+    document.querySelector(".top-custom-options").style.height = window.innerHeight - wrapperPadding - 80 + "px"
+}
+updateCutomOptionsSize();
+
+window.addEventListener('resize', updateCutomOptionsSize);
+
 for (const elem of document.querySelectorAll('.custom-select-wrapper')) {
     elem.addEventListener('click', function(event) {
         this.querySelector('.custom-select').classList.toggle('open');
