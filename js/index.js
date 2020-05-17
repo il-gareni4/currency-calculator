@@ -3,7 +3,6 @@ let currentCurrency;
 (async function() {
     const res = await fetch('https://www.floatrates.com/daily/usd.json');
     currentCurrency = await res.json();
-    console.log(currentCurrency)
 })();
 
 for (const elem of document.querySelectorAll('.custom-select-wrapper')) {
@@ -53,5 +52,23 @@ document.querySelector('.top-inputs__number').addEventListener('input', function
 });
 
 document.querySelector('.bottom-inputs__number').addEventListener('input', function() {
+    const bottomCustomSelect = document.querySelector('.bottom-custom-select');
+    const topCustomSelect = document.querySelector('.top-custom-select');
+    const topInput = document.querySelector('.top-inputs__number');
 
+    let firstMultiplier;
+    if (bottomCustomSelect.dataset.select === 'usd') {
+        firstMultiplier = +this.value;
+    } else {
+        firstMultiplier = +this.value / currentCurrency[bottomCustomSelect.dataset.select].rate;
+    }
+
+    let secondMultiplier;
+    if (topCustomSelect.dataset.select === 'usd') {
+        secondMultiplier = 1;
+    } else {
+        secondMultiplier = currentCurrency[topCustomSelect.dataset.select].rate;
+    }
+
+    topInput.value = (firstMultiplier * secondMultiplier).toFixed(2);
 });
