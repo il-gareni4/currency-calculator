@@ -1,8 +1,9 @@
 let currentCurrency;
 
 (async function() {
-    const res = await fetch('http://www.floatrates.com/daily/usd.json');
+    const res = await fetch('https://www.floatrates.com/daily/usd.json');
     currentCurrency = await res.json();
+    console.log(currentCurrency)
 })();
 
 for (const elem of document.querySelectorAll('.custom-select-wrapper')) {
