@@ -1,0 +1,123 @@
+html{
+    box-sizing: border-box;
+}
+*, *:after, *:before{
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #2C3E50;
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper {
+    padding: 10vmin 7vmin;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bottom-inputs {
+    position: relative;
+}
+.selected-flag {
+    position: absolute;
+    height: 80px;
+    border-radius: 10px 0 0 10px;
+    z-index: 2;
+}
+.select-flag {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    height: 30px;
+    z-index: 3;
+}
+.custom-select-wrapper {
+    user-select: none;
+    width: 100%;
+    margin-bottom: 7vmin;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.custom-select__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 150px ;
+    font-size: 40px;
+    height: 80px;
+    background: #34495E;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 50px;
+    transition: all 0.1s;
+    opacity: 0;
+    visibility: hidden;
+}
+.custom-select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.custom-select.open > .custom-select__trigger {
+    border-radius: 10px 10px 0 0;
+}
+.custom-select.open > .selected-flag {
+    border-radius: 10px 0 0 0;
+}
+.custom-option {
+    background-color: #41576d;
+    display: block;
+    padding: 0 80px;
+    font-size: 22px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 60px;
+    cursor: pointer;
+    transition: all 0.1s;
+    position: relative;
+}
+.custom-option:last-child {
+    border-radius: 0 0 10px 10px;
+}
+.custom-option:hover {
+    cursor: pointer;
+    background-color: #475c71;
+}
+.custom-option.selected {
+    background-color: #16a085;
+}
+.top-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.input__number {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background: #34495E;
+    font-family: inherit;
+    font-size: 40px;
+    color: #fff;
+    padding: 0 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}

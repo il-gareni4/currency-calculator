@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="top-inputs">
+        <div class="custom-select-wrapper">
+            <div class="custom-select top-custom-select" data-select="usd" id="top-select">
+                <img src="img/flags/usa.svg" alt="usa flag" class="selected-flag">
+                <div class="custom-select__trigger"><span>United States dollar (USD)</span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="custom-options">
+                    <div class="custom-option selected" data-value="usd">United States dollar (USD)
+                        <img src="img/flags/usa.svg" alt="USA flag" class="select-flag">
+                    </div>
+                    <div class="custom-option" data-value="rub">Russian ruble (RUB)
+                        <img src="img/flags/russia.svg" alt="Russia flag" class="select-flag">
+                    </div>
+                    <div class="custom-option" data-value="cny">Renminbi (CNY)
+                        <img src="img/flags/china.svg" alt="China flag" class="select-flag">
+                    </div>
+                    <div class="custom-option" data-value="jpy">Japanese yen (JPY)
+                        <img src="img/flags/japan.svg" alt="Japan flag" class="select-flag">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <label>
+            <input type="text" class="top-inputs__number input__number">
+        </label>
+    </div>
+    <div class="bottom-inputs">
+        <div class="custom-select-wrapper">
+            <div class="custom-select bottom-custom-select" data-select="rub" id="bottom-select">
+                <img src="img/flags/russia.svg" alt="russia flag" class="selected-flag">
+                <div class="custom-select__trigger"><span>Russian ruble (RUB)</span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="custom-options">
+                    <div class="custom-option selected" data-value="usd">United States dollar (USD)
+                        <img src="img/flags/usa.svg" alt="USA flag" class="select-flag">
+                    </div>
+                    <div class="custom-option" data-value="rub">Russian ruble (RUB)
+                        <img src="img/flags/russia.svg" alt="Russia flag" class="select-flag">
+                    </div>
+                    <div class="custom-option" data-value="cny">Renminbi (CNY)
+                        <img src="img/flags/china.svg" alt="China flag" class="select-flag">
+                    </div>
+                    <div class="custom-option" data-value="jpy">Japanese yen (JPY)
+                        <img src="img/flags/japan.svg" alt="Japan flag" class="select-flag">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <label>
+            <input type="text" class="bottom-inputs__number input__number">
+        </label>
+    </div>
+</div>
+
+
+    <script src="js/index.js"></script>
+</body>
+</html>
