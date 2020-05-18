@@ -38,19 +38,40 @@ for (const elem of document.querySelectorAll(".custom-option")) {
         option.classList.add("selected");
         customSelect.dataset.select = option.dataset.value;
         selectText.textContent = option.textContent;
+
+        if (option.parentElement.classList.contains('top-custom-options')) {
+            calculateFromTop();
+            startCssAnimation(document.querySelector('.bottom-inputs__number'), 'changed', 'value-changed');
+        } else {
+            calculateFromBottom();
+            startCssAnimation(document.querySelector('.top-inputs__number'), 'changed', 'value-changed');
+        }
     });
 }
 
-document.querySelector('.top-inputs__number').addEventListener('input', function() {
+function startCssAnimation(elem, animName, animClass) {
+    function animEnd(event) {
+        if (event.animationName === animName) {
+            event.target.classList.remove(animClass);
+            event.target.removeEventListener('animationend', animEnd)
+        }
+    }
+
+    elem.addEventListener('animationend', animEnd);
+    elem.classList.add(animClass);
+}
+
+function calculateFromTop() {
     const topCustomSelect = document.querySelector('.top-custom-select');
     const bottomCustomSelect = document.querySelector('.bottom-custom-select');
     const bottomInput = document.querySelector('.bottom-inputs__number');
+    const topInput = document.querySelector('.top-inputs__number');
 
     let firstMultiplier;
     if (topCustomSelect.dataset.select === 'usd') {
-        firstMultiplier = +this.value;
+        firstMultiplier = +topInput.value.replace(/,/g, '');
     } else {
-        firstMultiplier = +this.value / currentCurrency[topCustomSelect.dataset.select].rate;
+        firstMultiplier = +topInput.value.replace(/,/g, '') / currentCurrency[topCustomSelect.dataset.select].rate;
     }
 
     let secondMultiplier;
@@ -60,19 +81,22 @@ document.querySelector('.top-inputs__number').addEventListener('input', function
         secondMultiplier = currentCurrency[bottomCustomSelect.dataset.select].rate;
     }
 
-    bottomInput.value = new Intl.NumberFormat('en-EN').format(+(firstMultiplier * secondMultiplier).toFixed(2));
-});
+    const result = +(firstMultiplier * secondMultiplier).toFixed(2);
 
-document.querySelector('.bottom-inputs__number').addEventListener('input', function() {
+    bottomInput.value = new Intl.NumberFormat('en-EN').format(result);
+}
+
+function calculateFromBottom() {
     const bottomCustomSelect = document.querySelector('.bottom-custom-select');
     const topCustomSelect = document.querySelector('.top-custom-select');
     const topInput = document.querySelector('.top-inputs__number');
+    const bottomInput = document.querySelector('.bottom-inputs__number');
 
     let firstMultiplier;
     if (bottomCustomSelect.dataset.select === 'usd') {
-        firstMultiplier = +this.value;
+        firstMultiplier = +bottomInput.value.replace(/,/g, '');
     } else {
-        firstMultiplier = +this.value / currentCurrency[bottomCustomSelect.dataset.select].rate;
+        firstMultiplier = +(bottomInput.value).replace(/,/g, '') / currentCurrency[bottomCustomSelect.dataset.select].rate;
     }
 
     let secondMultiplier;
@@ -83,4 +107,7 @@ document.querySelector('.bottom-inputs__number').addEventListener('input', funct
     }
 
     topInput.value = new Intl.NumberFormat('en-EN').format(+(firstMultiplier * secondMultiplier).toFixed(2));
-});
+}
+
+document.querySelector('.top-inputs__number').addEventListener('input', calculateFromTop);
+document.querySelector('.bottom-inputs__number').addEventListener('input', calculateFromBottom);

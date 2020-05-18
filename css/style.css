@@ -53,8 +53,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px 0 150px ;
-    font-size: 40px;
+    padding: 0 50px 0 150px;
+    font-size: 36px;
     height: 80px;
     background: #34495E;
     cursor: pointer;
@@ -123,6 +123,56 @@ body {
     padding: 0 15px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+.top-inputs__number {
+    margin-bottom: 75px;
+}
+.arrows {
+    position: absolute;
+    color: #1D2935;
+    text-shadow:  0 4px 1px rgba(0, 0, 0, 0.25);
+    top: 48%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    font-size: 8vmin;
+    margin: 0 auto;
+    user-select: none;
+}
+.arrow-select {
+    position: relative;
+    height: 15px;
+    width: 15px;
+    bottom: 5px;
+    right: -30px;
+}
+.arrow-select::before, .arrow-select::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 15px;
+    height: 2px;
+    transition: all 0.2s;
+}
+.arrow-select::before {
+    left: -5px;
+    transform: rotate(45deg);
+    background-color: #fff;
+}
+.arrow-select::after {
+    left: 5px;
+    transform: rotate(-45deg) ;
+    background-color: #fff;
+}
+.open .arrow-select::before {
+    left: -5px;
+    transform: translateX(5px) rotate(45deg);
+}
+.open .arrow-select::after {
+    left: 5px;
+    transform: translateX(-5px) rotate(-45deg);
+}
+.value-changed {
+    animation: changed 0.3s ease;
+}
 
 @media (max-device-width: 576px) {
     .wrapper {
@@ -145,5 +195,11 @@ body {
 @media (max-device-width: 350px) and (min-device-height: 520px) {
     .wrapper {
         padding: 60vmin 7vmin;
+    }
+}
+
+@keyframes changed {
+    25% {
+        background-color: rgba(46, 204, 113, 0.20);
     }
 }
