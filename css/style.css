@@ -126,17 +126,6 @@ body {
 .top-inputs__number {
     margin-bottom: 75px;
 }
-.arrows {
-    position: absolute;
-    color: #1D2935;
-    text-shadow:  0 4px 1px rgba(0, 0, 0, 0.25);
-    top: 48%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    font-size: 8vmin;
-    margin: 0 auto;
-    user-select: none;
-}
 .arrow-select {
     position: relative;
     height: 15px;
